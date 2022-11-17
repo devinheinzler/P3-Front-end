@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import MemeContainer from './MemeContainer';
+import React, {useState, useEffect} from 'react';
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
+
+  const [memes, setMemes] = useState([])
+useEffect (() => {
+    fetch("http://localhost:9292/memes")
+    .then((r) => r.json())
+    .then(setMemes) 
+}, [])
+
+function handleUpdateMeme(updatedMeme) {
+  const updatedMemes = memes.map((meme) =>
+    meme.id === updatedMeme.id ? updatedMeme : meme
+  );
+  setMemes(updatedMemes);
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MemeContainer
+        memes = {memes}
+        onUpdateMeme = {handleUpdateMeme}
+      />
     </div>
   );
 }
