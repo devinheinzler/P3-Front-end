@@ -14,14 +14,12 @@ function MemeContainer({memes, onUpdateMeme}) {
 // }, [])
 
 // console.log("anything")
-
 const memeCards = memes.map((meme) => ( 
 <MemeCard 
     key = {meme.id}
     meme= {meme}
     onUpdateMeme = {onUpdateMeme}
 />
-
 ))
 
 return <div className="meme-collection">{memeCards}</div>
