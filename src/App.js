@@ -2,8 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import MemeContainer from './MemeContainer';
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from './Home';
+import Nav from './Nav';
+import MemeForm from './MemeForm';
 
 function App() {
 
@@ -23,11 +25,14 @@ function App() {
 
   return (
       <>
-      <Home/>
+      <Nav/>
     <BrowserRouter>
     <div className="App">
-      <Route path="/" element = {<Home/>}/>
-      <Route path="/memes" element = {<MemeContainer/>}/>
+      <Switch>
+      <Route exact path="/"> <Home/></Route>
+      <Route path="/memes"> <MemeContainer/></Route>
+      <Route path= "/MemeForm"> <MemeForm/></Route>
+      </Switch>
     </div>
     </BrowserRouter>
     </>

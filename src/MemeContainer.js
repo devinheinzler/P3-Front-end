@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import MemeCard from "./MemeCard";
+import './MemeContainer.css'
 
 
 
@@ -14,6 +15,8 @@ function MemeContainer() {
 // }, [])
 
 // console.log("anything")
+
+
 
 const [memes, setMemes] = useState([])
 useEffect (() => {
@@ -33,11 +36,17 @@ function handleUpdateMeme(updatedMeme) {
   setMemes(updatedMemes);
 }
 
+function handleDeleteMeme(memeToDelete) {
+    const updatedMemes = memes.filter((meme) => meme.id !== memeToDelete.id);
+    setMemes(updatedMemes);
+  }
+
 const memeCards = memes.map((meme) => ( 
 <MemeCard 
     key = {meme.id}
     meme= {meme}
     onUpdateMeme = {handleUpdateMeme}
+    onDeleteMeme = {handleDeleteMeme}
 />
 ))
 

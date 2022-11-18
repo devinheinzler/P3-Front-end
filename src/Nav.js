@@ -1,16 +1,18 @@
 import React from "react";
 import {Menu, Header, Icon, Image, Button} from 'semantic-ui-react'
-import './Home.css'
 import {Link, withRouter} from "react-router-dom"
-function Home(){
+import './Home.css'
 
 
-return (
+function Nav() {
+
+
+
+    return(
         <div>
-                {/* <Link to = '/memes' name="memes">Memes</Link> */}
-                {/* <div className="menu-div">
+                            <div className="menu-div">
                 <Button
-                as = {Link} to = '/'
+                as = "a" href='/'
                 name = 'home'
                 animated>
                 <Button.Content visible>Home</Button.Content>
@@ -19,7 +21,7 @@ return (
                 </Button.Content>
                 </Button>
                 <Button 
-                as = {Link} to = "/memes"
+                as = "a" href='/memes'
                 name = "memes" 
                 animated>
                 <Button.Content visible>Memes</Button.Content>
@@ -27,24 +29,18 @@ return (
                 <Icon name='smile outline' />
                 </Button.Content>
                 </Button>
-                <Button animated='fade'>
+                <Button 
+                as = "a" href='/MemeForm'
+                name = "MemeForm" 
+                animated>
                 <Button.Content visible>Add your own!</Button.Content>
-                <Button.Content hidden>Let's do it!</Button.Content>
+                <Button.Content hidden>
+                <Icon name='plus' />
+                </Button.Content>
                 </Button>
-                </div> */}
-                <div className="header-div">
-                <Header as='h2' icon textAlign='center'>
-                        <Icon name='chess king' circular />
-                                <Header.Content>Welcome to MemeKing!</Header.Content>
-                </Header>
-                <Image
-                        centered
-                        size='large'
-                        src='https://pbs.twimg.com/media/EUXOgVHUUAERTe6.jpg'
-                />
                 </div>
         </div>
-)
+    )
 }
 
-export default Home
+export default Nav
