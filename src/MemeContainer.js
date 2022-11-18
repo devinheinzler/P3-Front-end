@@ -46,7 +46,7 @@ const memeCards = memes.map((meme) => (
     key = {meme.id}
     meme= {meme}
     onUpdateMeme = {handleUpdateMeme}
-    onDeleteMeme = {handleDeleteMeme}
+    // onDeleteMeme = {handleDeleteMeme}
 />
 ))
 
