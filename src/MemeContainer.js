@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import MemeCard from "./MemeCard";
 
 
 
 
-function MemeContainer({memes, onUpdateMeme}) {
+function MemeContainer() {
     
 // const [memes, setMemes] = useState([])
 // useEffect (() => {
@@ -14,14 +14,33 @@ function MemeContainer({memes, onUpdateMeme}) {
 // }, [])
 
 // console.log("anything")
+
+const [memes, setMemes] = useState([])
+useEffect (() => {
+    fetch("http://localhost:9292/memes")
+    .then((r) => r.json())
+    .then(setMemes) 
+}, [])
+
+// function handleAddMeme(newMeme) {
+//     setMemes([...memes, newMeme]);
+//   }
+
+function handleUpdateMeme(updatedMeme) {
+  const updatedMemes = memes.map((meme) =>
+    meme.id === updatedMeme.id ? updatedMeme : meme
+  );
+  setMemes(updatedMemes);
+}
+
 const memeCards = memes.map((meme) => ( 
 <MemeCard 
     key = {meme.id}
     meme= {meme}
-    onUpdateMeme = {onUpdateMeme}
+    onUpdateMeme = {handleUpdateMeme}
 />
 ))
-dssa
+
 return <div className="meme-collection">{memeCards}</div>
 
 }
