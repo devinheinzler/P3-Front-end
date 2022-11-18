@@ -24,15 +24,15 @@ function handleLikeClick() {
       .then(onUpdateMeme);
   }
 
-  // function handleDeleteClick() {
-  //   fetch(`http://localhost:9292/memes/${id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((r) => r.json())
-  //     .then(() => {
-  //       onDeleteMeme(meme);
-  //     });
-  // }
+  function handleDeleteClick() {
+    fetch(`http://localhost:9292/memes/${id}`, {
+      method: "DELETE",
+    })
+      // .then((r) => r.json())
+      .then(() => {
+        onDeleteMeme(meme);
+      });
+  }
 
 return (
 
@@ -57,7 +57,7 @@ return (
         {likes}
       </Label>
     </Button>
-    <Button animated='fade' basic color="red">
+    <Button animated='fade' basic color="red" onClick={handleDeleteClick}>
       <Button.Content visible>Delete</Button.Content>
       <Button.Content hidden>To the void!</Button.Content>
     </Button>

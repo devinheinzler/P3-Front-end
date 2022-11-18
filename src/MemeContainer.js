@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import MemeCard from "./MemeCard";
 import './MemeContainer.css'
+import {Card} from 'semantic-ui-react'
 
 
 
@@ -17,12 +18,15 @@ function MemeContainer() {
 // console.log("anything")
 
 
+function getMemes() {
+  fetch("http://localhost:9292/memes")
+  .then((r) => r.json())
+  .then(setMemes) 
+}
 
 const [memes, setMemes] = useState([])
 useEffect (() => {
-    fetch("http://localhost:9292/memes")
-    .then((r) => r.json())
-    .then(setMemes) 
+getMemes()
 }, [])
 
 // function handleAddMeme(newMeme) {
@@ -46,7 +50,7 @@ const memeCards = memes.map((meme) => (
     key = {meme.id}
     meme= {meme}
     onUpdateMeme = {handleUpdateMeme}
-    // onDeleteMeme = {handleDeleteMeme}
+    onDeleteMeme = {handleDeleteMeme}
 />
 ))
 
