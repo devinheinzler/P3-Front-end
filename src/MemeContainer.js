@@ -41,7 +41,9 @@ const memeCards = memes.map((meme) => (
 />
 ))
 
-return <div className="meme-collection">{memeCards}</div>
+return (
+<div className="meme-collection">{memeCards}</div>
+)
 
 }
 

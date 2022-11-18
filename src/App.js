@@ -22,13 +22,15 @@ function App() {
 // }
 
   return (
+      <>
+      <Home/>
     <BrowserRouter>
     <div className="App">
       <Route path="/" element = {<Home/>}/>
-      <Home/>
       <Route path="/memes" element = {<MemeContainer/>}/>
     </div>
     </BrowserRouter>
+    </>
   );
 }
 

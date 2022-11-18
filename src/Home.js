@@ -1,19 +1,26 @@
 import React from "react";
 import {Menu, Header, Icon, Image, Button} from 'semantic-ui-react'
 import './Home.css'
+import {Link, withRouter} from "react-router-dom"
 function Home(){
 
 
 return (
         <div>
                 <div className="menu-div">
-                <Button  animated>
+                <Button
+                as = {Link} to = '/'
+                name = 'home'
+                animated>
       <Button.Content visible>Home</Button.Content>
       <Button.Content hidden>
         <Icon name='home' />
       </Button.Content>
     </Button>
-    <Button animated>
+    <Button 
+    as = {Link} to = "/memes"
+    name = "memes" 
+    animated>
       <Button.Content visible>Memes</Button.Content>
       <Button.Content hidden>
         <Icon name='smile outline' />
